@@ -1,0 +1,210 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+    :root {
+        --radius: 0.5rem;
+        /* Warm parchment background with subtle cream tones */
+        --background: 0.97 0.02 60;
+        --foreground: 0.25 0.03 40;
+        /* Card with slightly elevated parchment */
+        --card: 0.98 0.015 55;
+        --card-foreground: 0.25 0.03 40;
+        --popover: 0.98 0.015 55;
+        --popover-foreground: 0.25 0.03 40;
+        /* Brass/bronze primary accent */
+        --primary: 0.45 0.12 45;
+        --primary-foreground: 0.98 0.015 55;
+        /* Muted warm gray */
+        --secondary: 0.88 0.015 50;
+        --secondary-foreground: 0.30 0.03 40;
+        --muted: 0.92 0.01 50;
+        --muted-foreground: 0.50 0.02 40;
+        /* Warm accent for highlights */
+        --accent: 0.85 0.08 35;
+        --accent-foreground: 0.30 0.03 40;
+        /* Warm destructive */
+        --destructive: 0.55 0.20 25;
+        --destructive-foreground: 0.98 0.015 55;
+        /* Subtle borders */
+        --border: 0.85 0.02 45;
+        --input: 0.85 0.02 45;
+        --ring: 0.45 0.12 45;
+        --chart-1: 0.646 0.222 41.116;
+        --chart-2: 0.6 0.118 184.704;
+        --chart-3: 0.398 0.07 227.392;
+        --chart-4: 0.828 0.189 84.429;
+        --chart-5: 0.769 0.188 70.08;
+    }
+
+    .dark {
+        /* Deep charcoal with warm undertones */
+        --background: 0.18 0.02 40;
+        --foreground: 0.95 0.01 55;
+        /* Elevated card surface */
+        --card: 0.22 0.02 40;
+        --card-foreground: 0.95 0.01 55;
+        --popover: 0.22 0.02 40;
+        --popover-foreground: 0.95 0.01 55;
+        /* Bright brass for dark mode */
+        --primary: 0.70 0.15 50;
+        --primary-foreground: 0.18 0.02 40;
+        /* Muted surfaces */
+        --secondary: 0.28 0.02 40;
+        --secondary-foreground: 0.95 0.01 55;
+        --muted: 0.25 0.02 40;
+        --muted-foreground: 0.65 0.01 50;
+        /* Accent */
+        --accent: 0.35 0.05 35;
+        --accent-foreground: 0.95 0.01 55;
+        /* Destructive */
+        --destructive: 0.60 0.22 25;
+        --destructive-foreground: 0.95 0.01 55;
+        /* Borders */
+        --border: 0.30 0.02 40;
+        --input: 0.30 0.02 40;
+        --ring: 0.70 0.15 50;
+        --chart-1: 0.488 0.243 264.376;
+        --chart-2: 0.696 0.17 162.48;
+        --chart-3: 0.769 0.188 70.08;
+        --chart-4: 0.627 0.265 303.9;
+        --chart-5: 0.645 0.246 16.439;
+    }
+
+    .ocean {
+        /* Deep ocean blues with teal accents */
+        --background: 0.92 0.05 220;
+        --foreground: 0.20 0.08 230;
+        --card: 0.95 0.04 215;
+        --card-foreground: 0.20 0.08 230;
+        --popover: 0.95 0.04 215;
+        --popover-foreground: 0.20 0.08 230;
+        /* Vibrant teal primary */
+        --primary: 0.55 0.15 200;
+        --primary-foreground: 0.98 0.02 220;
+        --secondary: 0.85 0.06 210;
+        --secondary-foreground: 0.25 0.08 230;
+        --muted: 0.88 0.04 215;
+        --muted-foreground: 0.50 0.06 220;
+        --accent: 0.75 0.12 180;
+        --accent-foreground: 0.20 0.08 230;
+        --destructive: 0.55 0.22 15;
+        --destructive-foreground: 0.98 0.02 220;
+        --border: 0.80 0.06 215;
+        --input: 0.80 0.06 215;
+        --ring: 0.55 0.15 200;
+    }
+
+    .sunset {
+        /* Warm sunset oranges and pinks */
+        --background: 0.95 0.06 40;
+        --foreground: 0.25 0.08 20;
+        --card: 0.97 0.05 35;
+        --card-foreground: 0.25 0.08 20;
+        --popover: 0.97 0.05 35;
+        --popover-foreground: 0.25 0.08 20;
+        /* Vibrant coral primary */
+        --primary: 0.60 0.18 25;
+        --primary-foreground: 0.98 0.02 40;
+        --secondary: 0.88 0.06 30;
+        --secondary-foreground: 0.30 0.08 20;
+        --muted: 0.90 0.04 35;
+        --muted-foreground: 0.55 0.06 25;
+        --accent: 0.75 0.15 350;
+        --accent-foreground: 0.25 0.08 20;
+        --destructive: 0.50 0.22 10;
+        --destructive-foreground: 0.98 0.02 40;
+        --border: 0.85 0.06 35;
+        --input: 0.85 0.06 35;
+        --ring: 0.60 0.18 25;
+    }
+
+    .forest {
+        /* Rich forest greens with earthy tones */
+        --background: 0.94 0.05 140;
+        --foreground: 0.22 0.08 150;
+        --card: 0.96 0.04 135;
+        --card-foreground: 0.22 0.08 150;
+        --popover: 0.96 0.04 135;
+        --popover-foreground: 0.22 0.08 150;
+        /* Deep emerald primary */
+        --primary: 0.50 0.14 160;
+        --primary-foreground: 0.98 0.02 140;
+        --secondary: 0.86 0.06 145;
+        --secondary-foreground: 0.28 0.08 150;
+        --muted: 0.89 0.04 140;
+        --muted-foreground: 0.52 0.06 145;
+        --accent: 0.70 0.12 120;
+        --accent-foreground: 0.22 0.08 150;
+        --destructive: 0.55 0.20 25;
+        --destructive-foreground: 0.98 0.02 140;
+        --border: 0.82 0.06 140;
+        --input: 0.82 0.06 140;
+        --ring: 0.50 0.14 160;
+    }
+
+    .lavender {
+        /* Soft lavender and purple tones */
+        --background: 0.94 0.06 290;
+        --foreground: 0.25 0.08 280;
+        --card: 0.96 0.05 285;
+        --card-foreground: 0.25 0.08 280;
+        --popover: 0.96 0.05 285;
+        --popover-foreground: 0.25 0.08 280;
+        /* Rich purple primary */
+        --primary: 0.55 0.16 280;
+        --primary-foreground: 0.98 0.02 290;
+        --secondary: 0.87 0.06 285;
+        --secondary-foreground: 0.30 0.08 280;
+        --muted: 0.90 0.04 290;
+        --muted-foreground: 0.53 0.06 285;
+        --accent: 0.72 0.14 310;
+        --accent-foreground: 0.25 0.08 280;
+        --destructive: 0.55 0.22 15;
+        --destructive-foreground: 0.98 0.02 290;
+        --border: 0.83 0.06 285;
+        --input: 0.83 0.06 285;
+        --ring: 0.55 0.16 280;
+    }
+
+    * {
+        @apply border-border;
+    }
+    body {
+        @apply bg-background text-foreground;
+        font-family: 'Merriweather', 'Georgia', 'Palatino', 'Times New Roman', serif;
+        font-size: 16px;
+        line-height: 1.7;
+    }
+
+    h1, h2, h3, h4, h5, h6 {
+        font-family: 'Playfair Display', 'Georgia', serif;
+        font-weight: 700;
+        line-height: 1.3;
+        letter-spacing: -0.02em;
+    }
+
+    h1 {
+        font-size: 2.5rem;
+    }
+
+    h2 {
+        font-size: 2rem;
+    }
+
+    h3 {
+        font-size: 1.5rem;
+    }
+}
+
+@layer components {
+    .diary-page {
+        @apply bg-card border border-border shadow-lg;
+    }
+    
+    .diary-entry-text {
+        @apply leading-relaxed;
+        font-family: 'Merriweather', 'Georgia', 'Palatino', 'Times New Roman', serif;
+    }
+}

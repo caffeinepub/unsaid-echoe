@@ -1,0 +1,59 @@
+{
+  "kind": "implementation_plan",
+  "version": "1.0",
+  "title": "Fix diary entry deletion to be in-app only and delete the correct entry by timestamp",
+  "requirements": [
+    {
+      "id": "REQ-16",
+      "summary": "Ensure the diary delete UI only performs an in-app delete action (no navigation/redirect/theme changes) by preventing default behaviors and avoiding external navigation code.",
+      "acceptanceCriteria": [
+        "Triggering delete from any diary screen control does not open a new tab, redirect, or change the page to unrelated content.",
+        "Delete action results in either a confirmation prompt (if present) or a delete request; it never triggers a browser navigation event (no form-submit redirect, no anchor navigation).",
+        "After deletion succeeds, the entries list refreshes and the deleted entry is no longer present; the app remains on the diary UI."
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/features/diary/DiaryEditor.tsx",
+          "operation": "modify",
+          "description": "Add a dedicated in-app Delete control for existing entries (use a Button with type=\"button\"), and implement a delete click handler that calls preventDefault/stopPropagation defensively, does not set window.location, and does not use anchors/external links. Show an English confirmation prompt before deleting and keep the user on the diary UI after success/failure."
+        },
+        {
+          "path": "frontend/src/features/diary/DiaryScreen.tsx",
+          "operation": "modify",
+          "description": "Update selection state to be stable across list refreshes (track selected entry by timestamp rather than index) so deleting/refetching cannot result in selecting a different entry or causing unexpected UI transitions."
+        },
+        {
+          "path": "frontend/src/features/diary/DiaryList.tsx",
+          "operation": "modify",
+          "description": "Use entry.timestamp as the React key and adjust selection callback to pass timestamp (instead of index) to align with stable selection and prevent mismatch after refetch."
+        }
+      ]
+    },
+    {
+      "id": "REQ-17",
+      "summary": "Wire the frontend delete flow to call the backend deleteDiaryEntry(timestamp) API and refresh the React Query diaryEntries cache with proper in-UI error handling.",
+      "acceptanceCriteria": [
+        "Backend exposes a method that deletes exactly one entry for the caller given the entry timestamp, and traps/returns an error if the caller is unauthorized.",
+        "Frontend calls the backend delete API for the currently selected entry and invalidates/refetches the React Query ['diaryEntries'] cache on success.",
+        "If deletion fails, show an English error message in the UI (toast or inline) and do not navigate away."
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/features/diary/hooks/useDiaryMutations.ts",
+          "operation": "modify",
+          "description": "Add a React Query mutation hook (e.g., useDeleteEntry) that calls actor.deleteDiaryEntry(timestamp) for the selected entry, and on success invalidates the ['diaryEntries'] query key."
+        },
+        {
+          "path": "frontend/src/features/diary/DiaryEditor.tsx",
+          "operation": "modify",
+          "description": "Use the new delete mutation hook to delete the currently viewed entry by its DiaryEntry.timestamp, show an English toast on error, and on success close the editor/clear selection and rely on ['diaryEntries'] invalidation to refresh the list."
+        },
+        {
+          "path": "frontend/src/features/diary/DiaryScreen.tsx",
+          "operation": "modify",
+          "description": "Ensure the post-delete UX remains within the diary UI: after a successful delete, clear the selected timestamp (so the editor closes or shows the empty state) and rely on query invalidation/refetch to remove the deleted entry from the list without navigation."
+        }
+      ]
+    }
+  ]
+}

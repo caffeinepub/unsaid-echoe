@@ -1,0 +1,64 @@
+{
+  "kind": "coverage_report",
+  "version": "1.0",
+  "generatedAt": "2026-02-09T21:32:29.532Z",
+  "sources": {
+    "buildRequest": true,
+    "implementationPlan": true
+  },
+  "requirements": {
+    "total": 2,
+    "implemented": 2,
+    "items": [
+      {
+        "id": "REQ-16",
+        "summary": "Fix the diary entry delete action so it only deletes the selected entry and never navigates away from the app or opens any unrelated “live video theme” screen (e.g., nature/Barbie/adventure). Ensure any delete UI handler prevents default navigation/submission behavior and does not set window.location or use an external link.",
+        "status": "implemented",
+        "plannedFiles": [
+          "frontend/src/features/diary/DiaryEditor.tsx",
+          "frontend/src/features/diary/DiaryScreen.tsx",
+          "frontend/src/features/diary/DiaryList.tsx"
+        ],
+        "matchedFiles": [
+          "frontend/src/features/diary/DiaryEditor.tsx",
+          "frontend/src/features/diary/DiaryScreen.tsx",
+          "frontend/src/features/diary/DiaryList.tsx"
+        ]
+      },
+      {
+        "id": "REQ-17",
+        "summary": "Add a backend API to delete a diary entry owned by the authenticated caller, and wire the frontend to call it from the delete UI. Use the entry timestamp as the identifier (matching the existing DiaryEntry.timestamp field) so the correct entry is deleted even if list order changes.",
+        "status": "implemented",
+        "plannedFiles": [
+          "frontend/src/features/diary/hooks/useDiaryMutations.ts",
+          "frontend/src/features/diary/DiaryEditor.tsx",
+          "frontend/src/features/diary/DiaryScreen.tsx"
+        ],
+        "matchedFiles": [
+          "frontend/src/features/diary/hooks/useDiaryMutations.ts",
+          "frontend/src/features/diary/DiaryEditor.tsx",
+          "frontend/src/features/diary/DiaryScreen.tsx"
+        ]
+      }
+    ]
+  },
+  "changedFiles": [
+    "backend/main.mo",
+    "build-request.json",
+    "feature_evidence.json",
+    "frontend-file-summaries.txt",
+    "frontend-implementation-plan.json",
+    "frontend/src/backend.d.ts",
+    "frontend/src/backend.ts",
+    "frontend/src/declarations/backend.did.d.ts",
+    "frontend/src/declarations/backend.did.js",
+    "frontend/src/features/diary/DiaryEditor.tsx",
+    "frontend/src/features/diary/DiaryList.tsx",
+    "frontend/src/features/diary/DiaryScreen.tsx",
+    "frontend/src/features/diary/hooks/useDiaryMutations.ts",
+    "project_state.json",
+    "scratch/component-selection.json",
+    "spec.md",
+    "spec_vs_diff_report.json"
+  ]
+}

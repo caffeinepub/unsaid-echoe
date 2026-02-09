@@ -1,0 +1,184 @@
+{
+  "schemaVersion": "1.0.0",
+  "projectStateVersion": 9,
+  "summary": "Build a personal diary app with a lock (privacy protection) as the core feature.",
+  "architectural_notes": [],
+  "known_issues": [
+    "Deleting a diary entry triggers/redirects to an unexpected \"live video theme\" screen (e.g., nature/Barbie/adventure) instead of performing a normal delete flow."
+  ],
+  "isFixRequest": true,
+  "existing_features": [
+    {
+      "id": "feature-require-users-to-sign-in-with-internet-identity-before-they-can-view-create-edit-or-delete-any-diary-content-unauthenticated-users-must-only-see-a-locked-screen-with-a-sign-in-call-to-action",
+      "title": "Require users to sign in with Internet Identity before they can view, create, edit, or delete any diary content; unauthenticated users must only see a locked screen with a sign-in call-to-action.",
+      "reqIds": [
+        "REQ-1"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-provide-diary-entry-crud-in-the-ui-list-entries-view-an-entry-create-a-new-entry-edit-an-existing-entry-and-delete-an-entry-all-while-signed-in",
+      "title": "Provide diary entry CRUD in the UI: list entries, view an entry, create a new entry, edit an existing entry, and delete an entry, all while signed in.",
+      "reqIds": [
+        "REQ-3"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-use-react-query-to-load-and-mutate-diary-entries-and-show-appropriate-loading-empty-state-and-error-ui-states",
+      "title": "Use React Query to load and mutate diary entries, and show appropriate loading, empty-state, and error UI states.",
+      "reqIds": [
+        "REQ-4"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-add-a-consistent-creative-visual-theme-for-the-app-colors-typography-spacing-and-component-styling-suitable-for-a-private-diary-lock-concept-and-apply-it-across-all-screens",
+      "title": "Add a consistent, creative visual theme for the app (colors, typography, spacing, and component styling) suitable for a private diary/lock concept, and apply it across all screens.",
+      "reqIds": [
+        "REQ-5"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-rename-the-app-s-visible-branding-to-unsaid-echoe-exact-spelling-across-the-ui-including-the-locked-screen-title-the-authenticated-header-title-the-footer-copyright-app-name-text-and-the-browser-tab-title",
+      "title": "Rename the app’s visible branding to “Unsaid Echoe” (exact spelling) across the UI, including: the locked screen title, the authenticated header title, the footer copyright/app name text, and the browser tab title.",
+      "reqIds": [
+        "REQ-6"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-add-a-backend-api-to-create-a-diary-entry-with-an-optional-photo-attachment-and-update-the-frontend-data-flow-to-use-it-when-saving-entries-with-photos",
+      "title": "Add a backend API to create a diary entry with an optional photo attachment, and update the frontend data flow to use it when saving entries with photos.",
+      "reqIds": [
+        "REQ-8"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-update-the-diary-editor-ui-to-allow-selecting-removing-a-single-image-attachment-while-creating-or-editing-an-entry-and-show-a-preview-before-saving",
+      "title": "Update the diary editor UI to allow selecting/removing a single image attachment while creating or editing an entry, and show a preview before saving.",
+      "reqIds": [
+        "REQ-9"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-render-attached-photos-when-viewing-an-entry-and-provide-an-attachment-indicator-in-the-entries-list",
+      "title": "Render attached photos when viewing an entry and provide an attachment indicator in the entries list.",
+      "reqIds": [
+        "REQ-10"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-add-ui-support-to-choose-a-color-tag-when-creating-a-diary-entry-and-display-the-chosen-color-tag-in-the-entries-list-and-entry-viewer-alongside-a-clear-saved-date-time-display-for-each-entry",
+      "title": "Add UI support to choose a color tag when creating a diary entry, and display the chosen color tag in the entries list and entry viewer, alongside a clear saved date/time display for each entry.",
+      "reqIds": [
+        "REQ-14"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-add-more-colorful-app-theme-options-and-improved-typography-choices-and-provide-a-ui-control-to-switch-between-themes-in-addition-to-the-existing-light-dark-toggle-applying-consistently-across-all-screens-including-the-locked-screen-and-diary-screen",
+      "title": "Add more colorful app theme options and improved typography choices, and provide a UI control to switch between themes (in addition to the existing light/dark toggle), applying consistently across all screens including the locked screen and diary screen.",
+      "reqIds": [
+        "REQ-15"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-fix-the-diary-entry-delete-action-so-it-only-deletes-the-selected-entry-and-never-navigates-away-from-the-app-or-opens-any-unrelated-live-video-theme-screen-e-g-nature-barbie-adventure-ensure-any-delete-ui-handler-prevents-default-navigation-submission-behavior-and-does-not-set-window-location-or-use-an-external-link",
+      "title": "Fix the diary entry delete action so it only deletes the selected entry and never navigates away from the app or opens any unrelated “live video theme” screen (e.g., nature/Barbie/adventure). Ensure any delete UI handler prevents default navigation/submission behavior and does not set window.location or use an external link.",
+      "reqIds": [
+        "REQ-16"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-add-a-backend-api-to-delete-a-diary-entry-owned-by-the-authenticated-caller-and-wire-the-frontend-to-call-it-from-the-delete-ui-use-the-entry-timestamp-as-the-identifier-matching-the-existing-diaryentry-timestamp-field-so-the-correct-entry-is-deleted-even-if-list-order-changes",
+      "title": "Add a backend API to delete a diary entry owned by the authenticated caller, and wire the frontend to call it from the delete UI. Use the entry timestamp as the identifier (matching the existing DiaryEntry.timestamp field) so the correct entry is deleted even if list order changes.",
+      "reqIds": [
+        "REQ-17"
+      ],
+      "version": 1
+    }
+  ],
+  "new_feature_requests": [
+    {
+      "id": "AR-1",
+      "summary": "Personal diary app with lock-only access (privacy protection).",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-3",
+      "summary": "Implement backend data storage for diary entries scoped to the authenticated caller (Principal), so each user can only access their own entries.",
+      "reqIds": [
+        "REQ-2"
+      ],
+      "status": "pending"
+    },
+    {
+      "id": "AR-4",
+      "summary": "Add photo attachments to diary entries (upload/attach and view images per entry).",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-6",
+      "summary": "Extend the backend diary entry model to support an optional single photo attachment per entry, including storing the image bytes and associated metadata needed to render it in the UI.",
+      "reqIds": [
+        "REQ-7"
+      ],
+      "status": "pending"
+    },
+    {
+      "id": "AR-7",
+      "summary": "Expand the app’s visual theming with more colorful theme options and improved typography/font choices.",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-8",
+      "summary": "Ensure diary lock/privacy so entries are accessible only to the signed-in owner (not other users).",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-9",
+      "summary": "Store and display entry date/time metadata, and support a per-entry color (or color tag) feature.",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-10",
+      "summary": "Extend the backend DiaryEntry model to include a per-entry color tag field (e.g., a small set of named colors or a hex-like string) and return it from getEntries().",
+      "reqIds": [
+        "REQ-11"
+      ],
+      "status": "pending"
+    },
+    {
+      "id": "AR-11",
+      "summary": "Update backend entry-creation APIs to accept and store the per-entry color tag when creating entries, for both addEntry and addEntryWithPhoto.",
+      "reqIds": [
+        "REQ-12"
+      ],
+      "status": "pending"
+    },
+    {
+      "id": "AR-12",
+      "summary": "If the canister has existing persisted diary entries, add/adjust conditional upgrade migration so older entries are upgraded with a default color tag value (without breaking existing data).",
+      "reqIds": [
+        "REQ-13"
+      ],
+      "status": "pending"
+    }
+  ],
+  "gameProjectType": "none",
+  "projectName": "Unsaid Echoe",
+  "clarification_mode": "instant",
+  "clarification_rounds": 0
+}

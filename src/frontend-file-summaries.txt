@@ -1,0 +1,21 @@
+{
+  "frontend/src/App.tsx": "Main application component that orchestrates authentication flow with ThemeProvider configured to support multiple themes (light, dark, ocean, sunset, forest, lavender).",
+  "frontend/src/index.css": "Global styles with OKLCH color system defining six colorful themes (light, dark, ocean, sunset, forest, lavender) and improved typography using Merriweather and Playfair Display fonts with proper heading hierarchy.",
+  "frontend/tailwind.config.js": "Tailwind configuration extended with Merriweather serif font, Playfair Display for headings, and custom diary shadows and animations.",
+  "frontend/src/components/LockedScreen.tsx": "Landing page for unauthenticated users with \"Unsaid Echoe\" branding, lock icon, and sign-in call-to-action.",
+  "frontend/src/components/AuthButton.tsx": "Reusable authentication button that handles Internet Identity login/logout with loading states and query cache clearing.",
+  "frontend/src/components/ProfileSetup.tsx": "First-time user profile creation screen that collects the user's name after initial authentication.",
+  "frontend/src/components/InlineStatus.tsx": "Reusable status component for displaying loading, error, and empty states with appropriate icons and messages.",
+  "frontend/src/features/diary/DiaryScreen.tsx": "Main authenticated diary interface tracking selected entry by timestamp (instead of index) to maintain stable selection across deletions and refetches.",
+  "frontend/src/features/diary/DiaryList.tsx": "Scrollable list of diary entries using timestamp as React key and passing timestamp to selection callback for stable entry tracking.",
+  "frontend/src/features/diary/DiaryEditor.tsx": "Entry editor/viewer with delete button (trash icon) in view mode that shows confirmation prompt and calls backend delete API, preventing any navigation or external redirects.",
+  "frontend/src/features/diary/hooks/useDiaryEntries.ts": "React Query hook for fetching diary entries from the backend with proper actor dependency handling.",
+  "frontend/src/features/diary/hooks/useDiaryMutations.ts": "React Query mutation hooks for adding and deleting diary entries with proper cache invalidation.",
+  "frontend/src/hooks/useQueries.ts": "React Query hooks for user profile operations (get and save) with proper loading state management to prevent modal flash.",
+  "frontend/src/lib/utils.ts": "Utility function for merging Tailwind CSS classes using clsx and tailwind-merge.",
+  "frontend/index.html": "HTML document with updated title \"Unsaid Echoe\" for the diary application.",
+  "frontend/src/features/diary/PhotoAttachmentPicker.tsx": "Reusable component for selecting, previewing, and removing a single image attachment (PNG/JPEG/WebP) with file details display.",
+  "frontend/src/components/ThemeSwitcher.tsx": "Dropdown menu component for selecting from six available themes with color preview indicators for each theme option.",
+  "frontend/src/features/diary/EntryColorPicker.tsx": "Color picker component with eight predefined color options for tagging diary entries with visual selection feedback.",
+  "frontend/src/features/diary/EntryColorTag.tsx": "Small circular color indicator component for displaying entry color tags in three sizes (sm, md, lg)."
+}

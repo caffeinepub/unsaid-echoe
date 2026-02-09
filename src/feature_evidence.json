@@ -1,0 +1,47 @@
+{
+  "kind": "feature_evidence_report",
+  "features": [
+    {
+      "featureId": "feature-fix-the-diary-entry-delete-action-so-it-only-deletes-the-selected-entry-and-never-navigates-away-from-the-app-or-opens-any-unrelated-live-video-theme-screen-e-g-nature-barbie-adventure-ensure-any-delete-ui-handler-prevents-default-navigation-submission-behavior-and-does-not-set-window-location-or-use-an-external-link",
+      "featureTitle": "Fix the diary entry delete action so it only deletes the selected entry and never navigates away from the app or opens any unrelated “live video theme” screen (e.g., nature/Barbie/adventure). Ensure any delete UI handler prevents default navigation/submission behavior and does not set window.location or use an external link.",
+      "files": [
+        "frontend/src/features/diary/DiaryEditor.tsx",
+        "frontend/src/features/diary/DiaryList.tsx",
+        "frontend/src/features/diary/DiaryScreen.tsx"
+      ],
+      "components": [
+        "authorization@4.0.0",
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0"
+      ],
+      "testIds": [
+        "REQ-16"
+      ],
+      "confidence": "high"
+    },
+    {
+      "featureId": "feature-add-a-backend-api-to-delete-a-diary-entry-owned-by-the-authenticated-caller-and-wire-the-frontend-to-call-it-from-the-delete-ui-use-the-entry-timestamp-as-the-identifier-matching-the-existing-diaryentry-timestamp-field-so-the-correct-entry-is-deleted-even-if-list-order-changes",
+      "featureTitle": "Add a backend API to delete a diary entry owned by the authenticated caller, and wire the frontend to call it from the delete UI. Use the entry timestamp as the identifier (matching the existing DiaryEntry.timestamp field) so the correct entry is deleted even if list order changes.",
+      "files": [
+        "frontend/src/features/diary/DiaryEditor.tsx",
+        "frontend/src/features/diary/DiaryScreen.tsx",
+        "frontend/src/features/diary/hooks/useDiaryMutations.ts"
+      ],
+      "components": [
+        "authorization@4.0.0",
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0"
+      ],
+      "testIds": [
+        "REQ-17"
+      ],
+      "confidence": "high"
+    }
+  ]
+}

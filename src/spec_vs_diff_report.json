@@ -1,0 +1,27 @@
+{
+  "kind": "spec_vs_diff_report",
+  "version": "1.0",
+  "generatedAt": "2026-02-09T21:32:29.530Z",
+  "summary": "REQ-16 and most of REQ-17 appear implemented: frontend delete handler now prevents default/propagation, confirms, calls a new backend delete API, shows English toasts on success/failure, and invalidates the React Query ['diaryEntries'] cache. Backend adds deleteDiaryEntry(timestamp) with authorization checks. One potential gap: backend does not ensure exactly one entry was deleted (it silently results in no-op if the timestamp is not found, and would delete multiple if duplicates exist).",
+  "missing_requirements": [
+    {
+      "id": "REQ-17",
+      "requirement": "Backend exposes a method that deletes exactly one entry for the caller given the entry timestamp (and errors if deletion cannot be performed as specified).",
+      "reason": "The backend implementation filters out all entries with the matching timestamp and then saves the filtered list, but does not verify that a matching entry existed (or that exactly one was removed). This can result in a successful call that deletes zero entries (timestamp not found) or multiple entries (if duplicate timestamps exist).",
+      "evidence": [
+        "backend/main.mo (deleteDiaryEntry uses entries.filter(entry.timestamp != timestamp) and does not check removal count)"
+      ]
+    }
+  ],
+  "hallucinated_features": [],
+  "confidence": 0.74,
+  "changed_files": [
+    "backend/main.mo",
+    "frontend-file-summaries.txt",
+    "frontend/src/features/diary/DiaryEditor.tsx",
+    "frontend/src/features/diary/DiaryList.tsx",
+    "frontend/src/features/diary/DiaryScreen.tsx",
+    "frontend/src/features/diary/hooks/useDiaryMutations.ts",
+    "project_state.json"
+  ]
+}

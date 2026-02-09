@@ -1,0 +1,67 @@
+{
+  "kind": "build_request",
+  "title": "Fix diary entry deletion flow and prevent unexpected redirects/themes",
+  "priority": "high",
+  "requirements": [
+    {
+      "id": "REQ-16",
+      "text": "Fix the diary entry delete action so it only deletes the selected entry and never navigates away from the app or opens any unrelated “live video theme” screen (e.g., nature/Barbie/adventure). Ensure any delete UI handler prevents default navigation/submission behavior and does not set window.location or use an external link.",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-1"
+        ],
+        "quotes": [
+          "Gave a password for this website and when I want to delete something which I was written then it delete gave  different live video theme  of nature or barbie or something adventurous"
+        ]
+      },
+      "acceptanceCriteria": [
+        "Triggering delete from any diary screen control does not open a new tab, redirect, or change the page to unrelated content.",
+        "Delete action results in either a confirmation prompt (if present) or a delete request; it never triggers a browser navigation event (no form-submit redirect, no anchor navigation).",
+        "After deletion succeeds, the entries list refreshes and the deleted entry is no longer present; the app remains on the diary UI."
+      ]
+    },
+    {
+      "id": "REQ-17",
+      "text": "Add a backend API to delete a diary entry owned by the authenticated caller, and wire the frontend to call it from the delete UI. Use the entry timestamp as the identifier (matching the existing DiaryEntry.timestamp field) so the correct entry is deleted even if list order changes.",
+      "target": "both",
+      "source": {
+        "messageIds": [
+          "msg-1"
+        ],
+        "quotes": [
+          "when I want to delete something which I was written then it delete"
+        ]
+      },
+      "acceptanceCriteria": [
+        "Backend exposes a method that deletes exactly one entry for the caller given the entry timestamp, and traps/returns an error if the caller is unauthorized.",
+        "Frontend calls the backend delete API for the currently selected entry and invalidates/refetches the React Query ['diaryEntries'] cache on success.",
+        "If deletion fails, show an English error message in the UI (toast or inline) and do not navigate away."
+      ]
+    }
+  ],
+  "constraints": [
+    "Backend must remain a single Motoko actor with all logic in backend/main.mo.",
+    "Do not edit frontend immutable paths: frontend/src/hooks/useInternetIdentity.ts, frontend/src/hooks/useInternetIdentity.tsx, frontend/src/hooks/useActor.ts, frontend/src/main.tsx, frontend/src/components/ui.",
+    "Use English for any user-facing text."
+  ],
+  "nonGoals": [
+    "Add password-based authentication (the app should continue using Internet Identity).",
+    "Add or embed any ‘live video theme’ backgrounds or external video content.",
+    "Introduce new backend services or external databases."
+  ],
+  "imageRequirements": {
+    "required": [],
+    "edits": []
+  },
+  "userProfileUpdate": {
+    "goalsToAdd": [],
+    "goalsToRemove": [],
+    "preferencesToAdd": [],
+    "preferencesToRemove": [],
+    "miscToAdd": [],
+    "miscToRemove": [],
+    "fieldsToSet": {},
+    "fieldsToDelete": []
+  }
+}
